@@ -15,6 +15,7 @@ export const products=[
         },
         image:`${BASE_URL}/images/Clothes/Shirt.png`
 
+
     },
     {
         category:"Clothes",

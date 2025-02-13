@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Card = ({ items }) => {
   const navigate=useNavigate()
+  console.log(items?.image)
+
   return (
     <div onClick={()=>navigate('/CardInfo' ,{state:{items}})} className="flex flex-col gap-3 w-[13rem] bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <img className="rounded-t-lg w-full h-40 object-cover " src={items?.image} alt={items?.title} />

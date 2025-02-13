@@ -20,6 +20,8 @@ import addCartRouter from './Routes/addCartRoutes.js';
 import fetchCartRoute from './Routes/fetchCartRoutes.js';
 import deleteRouter from './Routes/deleteAllRoutes.js';
 import deleteItemRouter from './Routes/deleteItemRoutes.js';
+import deleteProductRouter from './Routes/deleteProductsRoutes.js';
+
 dotenv.config()
 
 const app=express()
@@ -34,6 +36,7 @@ app.use(addCartRouter)
 app.use(fetchCartRoute)
 app.use(deleteRouter)
 app.use(deleteItemRouter)
+app.use("/api", deleteProductRouter);
 
 // app.use(addClothRouter)
 // app.use(itemRouter)
