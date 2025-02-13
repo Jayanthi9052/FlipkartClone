@@ -16,7 +16,7 @@ const Login = () => {
       password:password
     }
     try{
-      const res=await axios.post(`http://localhost:4000/authUser`,data);
+      const res=await axios.post(`https://flipkartclone-2-kz1p.onrender.com/authUser`,data);
       //console.log(res.data);
       if(res.data.message==="login successfull"){
         localStorage.setItem("user",JSON.stringify(data))

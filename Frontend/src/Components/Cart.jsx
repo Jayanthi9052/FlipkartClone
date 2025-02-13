@@ -12,7 +12,7 @@ const Cart = () => {
   useEffect(() => {
     const getCartData = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/fetchCartData");
+        const res = await axios.get("https://flipkartclone-2-kz1p.onrender.com/fetchCartData");
         const fetchedCartData = res?.data?.cartData || [];  
         console.log(fetchedCartData);
         setCartData(fetchedCartData); 
@@ -42,13 +42,13 @@ const Cart = () => {
   
 //delete all Cart Items
 const deleteAllCartItems=async()=>{
-  const res=await axios.delete("http://localhost:4000/deleteAllCart");
+  const res=await axios.delete("https://flipkartclone-2-kz1p.onrender.com/deleteAllCart");
   alert("cart items deleted successfully")
   setCartData([]);
 }
 const deleteItem=async(id)=>{
   try {
-    const res = await axios.delete("http://localhost:4000/deleteItem", {
+    const res = await axios.delete("https://flipkartclone-2-kz1p.onrender.com/deleteItem", {
       data: { id },
     });
 

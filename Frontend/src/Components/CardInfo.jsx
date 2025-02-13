@@ -18,7 +18,7 @@ const CardInfo = () => {
             quantity: quantity
         };
         try {
-            await axios.post("http://localhost:4000/addToCart", cartData);
+            await axios.post("https://flipkartclone-2-kz1p.onrender.com/addToCart", cartData);
             alert("Successfully added to cart");
         } catch (err) {
             alert("Error adding to cart");

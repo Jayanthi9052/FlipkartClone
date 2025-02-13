@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/products_data");
+        const response = await axios.get("https://flipkartclone-2-kz1p.onrender.com/products_data");
         const productData = response?.data?.fetchProduts;
         //console.log(productData)
 

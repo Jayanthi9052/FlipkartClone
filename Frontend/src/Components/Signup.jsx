@@ -26,7 +26,7 @@ const Signup = () => {
     console.log(payload)
 
     try {
-      const response = await axios.post("http://localhost:4000/addUser", payload);
+      const response = await axios.post("https://flipkartclone-2-kz1p.onrender.com/addUser", payload);
       alert("User registered successfully");
       localStorage.setItem("user",JSON.stringify(response.data))
       navigate('/');
