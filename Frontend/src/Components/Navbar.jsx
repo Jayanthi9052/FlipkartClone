@@ -11,12 +11,23 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false); 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [searchQuery,setSearchQuery]=useState('');
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
     navigate('/');
   };
+  const handleSearch=async(e)=>{
+    if(e.key==='Enter'){
+      try{
+        const{data}=await axios.get(`https://flipkartclone-2-kz1p.onrender.com/searchProduc`)
+      }catch(error){
+        console.log('search error:',error);
+      }
+    }
+
+  }
 
   
   return (
@@ -35,6 +46,9 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Search for products"
+              value={searchQuery}
+              onChange={(e)=>setSearchQuery(e.target.value)}
+              onKeyDown={handleSearch}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
             />
             <button className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500">
