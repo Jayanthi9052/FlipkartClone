@@ -1,34 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, MagnifyingGlassIcon, ShoppingCartIcon, CheckBadgeIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 import logo from '/src/assets/images/Flipkart_Logo_1.png';
 import './styles.css';
 import axios from 'axios';
+import { CartContext } from '../App';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const {cartCount}=useContext(CartContext)
   const [open, setOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false); 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [searchQuery,setSearchQuery]=useState('');
+
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
     navigate('/');
   };
-  const handleSearch=async(e)=>{
-    if(e.key==='Enter'){
-      try{
-        const{data}=await axios.get(`https://flipkartclone-2-kz1p.onrender.com/searchProduc`)
-      }catch(error){
-        console.log('search error:',error);
+  const handleSearch = async (e) => {
+    if (e.type === "click" || (e.key && e.key === "Enter")) {
+      if (!searchQuery.trim()) return; // Prevent empty searches
+  
+      try {
+        const { data } = await axios.get(`https://flipkartclone-2-kz1p.onrender.com/api/searchProduct?query=${searchQuery}`);
+        navigate('/search', { state: { results: data } });
+      } catch (error) {
+        console.log('Search error:', error);
       }
     }
-
-  }
-
+  };
+  console.log(cartCount)
   
   return (
     <header className="bg-white Navbar">
@@ -51,7 +56,9 @@ const Navbar = () => {
               onKeyDown={handleSearch}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
             />
-            <button className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500">
+            <button 
+            onClick={(e)=>handleSearch(e)}
+            className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500">
               <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
@@ -70,8 +77,8 @@ const Navbar = () => {
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5">
                   {cartQuantity}
                 </span>
-              )}
-             */}
+              )} */}
+            
           </button>
             
             <button 
@@ -89,7 +96,14 @@ const Navbar = () => {
         {user && (
           <button className="relative hidden lg:flex ml-6" onClick={() => navigate('/Cart')}>
             <ShoppingCartIcon className="h-6 w-6 text-gray-900" />
-            <h5></h5>
+            {console.log("Rendering Cart Count:", cartCount)}
+            {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1 py-0.2 block">
+                {cartCount}
+              </span>
+              
+              )}
+            
           </button>
         )}
 
@@ -165,20 +179,37 @@ const Navbar = () => {
                 >
                   Profile
                 </button>
+                <button className="relative  lg:flex ml-6" onClick={() => navigate('/Cart')}>
+                  <ShoppingCartIcon className="h-6 w-6 text-gray-900" />
+                  {console.log("Rendering Cart Count:", cartCount)}
+                  {cartCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1 py-0.2 block">
+                      {cartCount}
+                    </span>
+                    
+                    )}
+                </button>
                 <button 
                   className="block w-full text-left px-4 py-2 text-gray-900 rounded-md hover:bg-gray-100"
                   onClick={handleLogout}
                 >
                   Logout
                 </button>
+                
               </>
             ) : (
+              <>
               <button 
                 className="block w-full text-left px-4 py-2 text-gray-900 rounded-md hover:bg-gray-100"
                 onClick={() => { setOpen(false); navigate('/Login'); }}
               >
                 Login
               </button>
+              
+              
+            
+            </>
+
             )}
           </div>
         </Dialog.Panel>

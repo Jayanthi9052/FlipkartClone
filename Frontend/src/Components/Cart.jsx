@@ -38,7 +38,6 @@ const Cart = () => {
       navigate('/payment');
     }
   };
-//deleting particular item from cart
   
 //delete all Cart Items
 const deleteAllCartItems=async()=>{
@@ -46,6 +45,8 @@ const deleteAllCartItems=async()=>{
   alert("cart items deleted successfully")
   setCartData([]);
 }
+
+//deleting particular item from cart
 const deleteItem=async(id)=>{
   try {
     const res = await axios.delete("https://flipkartclone-2-kz1p.onrender.com/deleteItem", {

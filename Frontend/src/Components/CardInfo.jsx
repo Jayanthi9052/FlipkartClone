@@ -21,9 +21,10 @@ const CardInfo = () => {
             await axios.post("https://flipkartclone-2-kz1p.onrender.com/addToCart", cartData);
             alert("Successfully added to cart");
         } catch (err) {
+            console.error("Error adding to cart:", err.response ? err.response.data : err.message);
             alert("Error adding to cart");
-            console.log(err);
         }
+        
     };
     // useEffect(()=>{
     //     const cartFunction=async()=>{
