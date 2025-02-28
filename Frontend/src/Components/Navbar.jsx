@@ -33,7 +33,7 @@ const Navbar = () => {
       }
     }
   };
-  console.log(cartCount)
+  // console.log(cartCount)
   
   return (
     <header className="bg-white Navbar">

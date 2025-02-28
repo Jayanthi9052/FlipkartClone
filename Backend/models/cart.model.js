@@ -36,5 +36,5 @@ const CartModel=mongoose.Schema({
         type:String,
     }
 
-}, { timestamps: true })
+})
 export const Cart=mongoose.model("Cart",CartModel);
