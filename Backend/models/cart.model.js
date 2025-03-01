@@ -31,7 +31,7 @@ const CartModel=mongoose.Schema({
 
     },
     quantity:{
-        type:String,
+        type:Number,
 
     },
     price:{
