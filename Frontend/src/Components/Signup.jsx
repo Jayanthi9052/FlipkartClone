@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import "./styles.css";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 import Navbar from "./Navbar";
 import logo from "../assets/images/Flipkart_Logo_1.png";
-import "./styles.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 const Signup = () => {
   const navigate = useNavigate();
 
@@ -27,15 +30,40 @@ const Signup = () => {
 
     try {
       const response = await axios.post("https://flipkartclone-2-kz1p.onrender.com/addUser", payload);
-      alert("User registered successfully");
+      toast.success("User registered successfully",{
+        autoClose:3000,
+        pauseOnHover:true,
+        theme:"colored",
+        draggable:true,
+        closeOnClick:true,
+        progress:true
+      })
+      // alert("User registered successfully");
       localStorage.setItem("user",JSON.stringify(response.data))
       navigate('/');
     } catch (err) {
       if (err.response && err.response.status === 400) {
-        alert("User already exists");
+        toast.error("User already exists",{
+          autoClose:3000,
+          pauseOnHover:true,
+          theme:"colored",
+          draggable:true,
+          closeOnClick:true,
+          progress:true
+        })
+        // alert("User already exists");
       } else {
         console.log("error", err);
-        alert("Registration failed");
+        toast.error("Registration failed",{
+          autoClose:3000,
+          pauseOnHover:true,
+          theme:"colored",
+          draggable:true,
+          closeOnClick:true,
+          progress:true
+        })
+
+        // alert("Registration failed");
       }
     }
     setName("")

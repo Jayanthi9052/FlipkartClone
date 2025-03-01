@@ -96,7 +96,7 @@ const Navbar = () => {
         {user && (
           <button className="relative hidden lg:flex ml-6" onClick={() => navigate('/Cart')}>
             <ShoppingCartIcon className="h-6 w-6 text-gray-900" />
-            {console.log("Rendering Cart Count:", cartCount)}
+            {/* {console.log("Rendering Cart Count:", cartCount)} */}
             {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1 py-0.2 block">
                 {cartCount}
@@ -181,7 +181,7 @@ const Navbar = () => {
                 </button>
                 <button className="relative  lg:flex ml-6" onClick={() => navigate('/Cart')}>
                   <ShoppingCartIcon className="h-6 w-6 text-gray-900" />
-                  {console.log("Rendering Cart Count:", cartCount)}
+                  {/* {console.log("Rendering Cart Count:", cartCount)} */}
                   {cartCount > 0 && (
                       <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1 py-0.2 block">
                       {cartCount}

@@ -4,6 +4,8 @@ import logo from '../assets/images/Flipkart_Logo_1.png'
 import './styles.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const navigate=useNavigate()
   const [email,setEmail]=useState("")
@@ -20,18 +22,56 @@ const Login = () => {
       //console.log(res.data);
       if(res.data.message==="login successfull"){
         localStorage.setItem("user",JSON.stringify(data))
+        toast.success("successfully logged in",{
+          theme:"colored",
+          closeOnClick:true,
+          position:"top-right",
+          pauseOnHover:true,
+          hideProgressBar:true,
+          draggable:true,
+          autoClose:3000
+
+        });
         //alert("successfully logged in");
         navigate('/');
       }
     }catch (err) {
       if (err.response && err.response.status === 401) {
-        alert("Invalid password");
+        toast.error("Invalid password",{
+          theme:"colored",
+          closeOnClick:true,
+          position:"top-right",
+          pauseOnHover:true,
+          hideProgressBar:true,
+          draggable:true
+      });
+        // alert("Invalid password");
       } else if (err.response && err.response.status === 404) {
-        alert("User does not exist");
-        navigate('/Login');
+        toast.error("User does not exist",{
+          theme:"colored",
+          closeOnClick:true,
+          position:"top-right",
+          pauseOnHover:true,
+          // hideProgressBar:true,
+          draggable:true,
+          autoClose:3000
+
+        })
+        // alert("User does not exist");
+        navigate('/Signup');
       } else {
         console.error(err);
-        alert("Something went wrong. Please try again.");
+        toast.error("Error Loging in,Plaese try after some time",{
+          autoClose:3000,
+          theme:"colored",
+          position:"top-right",
+          draggable:true,
+          pauseOnHover:true,
+          autoClose:3000
+
+
+        })
+        
       }
     }
 

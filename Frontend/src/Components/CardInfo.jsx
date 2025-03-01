@@ -1,31 +1,66 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import { CartContext } from '../App';
+import {toast} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 const CardInfo = () => {
     const [quantity, setQuantity] = useState(1);
+    const {updateCart}=useContext(CartContext)
     const location = useLocation();
     const { items } = location.state;
-    const [cartQuantity,setCartQuantity]=useState("")
+    const navigate=useNavigate()
+    // const [cartQuantity,setCartQuantity]=useState("")
 
-
+    const user=localStorage.getItem("user")
+    // console.log(user)
+    console.log(items)
     const addToCart = async () => {
-        const cartData = {
-            title: items.title,
-            image: items.image,
-            price: items.price,
-            quantity: quantity
-        };
-        try {
-            await axios.post("https://flipkartclone-2-kz1p.onrender.com/addToCart", cartData);
-            alert("Successfully added to cart");
-        } catch (err) {
-            console.error("Error adding to cart:", err.response ? err.response.data : err.message);
-            alert("Error adding to cart");
+        if (!user) {
+            toast.warn("Please log in to add items to the cart!", {
+                position: "top-right",
+                autoClose: 3000,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "colored",
+            });
+            navigate('/Login'); 
+            return; 
         }
-        
-    };
+            const cartData = {
+                id:items._id,
+                title: items.title,
+                image: items.image,
+                price: items.price,
+                quantity: quantity
+            };
+            try {
+                await axios.post("https://flipkartclone-2-kz1p.onrender.com/addToCart", cartData);
+                toast.success("Successfully added to cart!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    // hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    theme: "colored",
+                });
+                  updateCart();
+            } catch (err) {
+                console.error("Error adding to cart:", err.response ? err.response.data : err.message);
+                toast.error("Error adding to cart",{
+                    position:"top-right",
+                    autoClose:3000,
+                    draggable:true,
+                    theme:"colored"
+                })
+            }
+            
+        };
+    
     // useEffect(()=>{
     //     const cartFunction=async()=>{
          
@@ -74,12 +109,14 @@ const CardInfo = () => {
                 </div>
 
                 {/* Add to Cart Button */}
+                
                 <button 
                     className='mt-5 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300'
                     onClick={addToCart}
                 >
                     Add to Cart
                 </button>
+                
             </div>
         </div>
         </>

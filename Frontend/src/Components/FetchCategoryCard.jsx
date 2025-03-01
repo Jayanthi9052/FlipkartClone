@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CategoryContext } from '../App'; // ✅ Import context
+import { CategoryContext } from '../App'; 
 import Card from './Card';
 import MainCard from './MainCard';
 
 const CategoryCard = () => {
   const navigate = useNavigate();
-  const { categoryData } = useContext(CategoryContext); // ✅ Use context instead of API call
+  const { categoryData } = useContext(CategoryContext); 
+  // console.log(categoryData)
 
   return (
     <div>

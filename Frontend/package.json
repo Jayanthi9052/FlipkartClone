@@ -9,9 +9,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-  "start": "vite"
-},
-
+    "start": "vite"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -30,6 +29,7 @@
     "flowbite-react": "^0.10.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.1.5"
+    "react-router-dom": "^7.1.5",
+    "react-toastify": "^11.0.5"
   }
 }

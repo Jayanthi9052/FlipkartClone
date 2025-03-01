@@ -1,20 +1,37 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../App';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
   const [cartdata, setCartData] = useState([]);
   const [total, setTotal] = useState(0);
   const navigate = useNavigate();
+  const {updateCart}=useContext(CartContext)
+  const user=localStorage.getItem("user")
 
   // Fetch Cart Data
   useEffect(() => {
     const getCartData = async () => {
+      if(!user){
+        toast.warn("Login to add items to cart",{
+          position: "top-right",
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
+        navigate("/Login");
+        return;
+      }
+
       try {
         const res = await axios.get("https://flipkartclone-2-kz1p.onrender.com/fetchCartData");
         const fetchedCartData = res?.data?.cartData || [];  
-        console.log(fetchedCartData);
+        // console.log(fetchedCartData);
         setCartData(fetchedCartData); 
       } catch (err) {
         console.error("Error fetching cart data:", err);
@@ -42,6 +59,7 @@ const Cart = () => {
 //delete all Cart Items
 const deleteAllCartItems=async()=>{
   const res=await axios.delete("https://flipkartclone-2-kz1p.onrender.com/deleteAllCart");
+  updateCart()
   alert("cart items deleted successfully")
   setCartData([]);
 }
@@ -55,7 +73,7 @@ const deleteItem=async(id)=>{
 
     if (res.status === 200) { 
       alert("Item deleted successfully");
-
+      updateCart()
       setCartData(prevCartData => prevCartData.filter(item => item._id !== id));
     }
   } catch (err) {

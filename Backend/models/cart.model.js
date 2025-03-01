@@ -20,7 +20,9 @@ const CartModel=mongoose.Schema({
     //         }
     //     }
     // ]
-   
+    product_id:{
+        type:String
+    },
     title:{
         type:String,
     },
