@@ -1,43 +1,43 @@
-.mainPage{
+/* .mainPage{
     background-color: rgb(247, 248, 249);
-}
+} */
 
-.signInPage{
+/* .signInPage{
     background-color: rgb(220, 223, 223);
-}
-.Navbar{
+} */
+/* .Navbar{
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 1;
-}
-.category {
+} */
+/* .category {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
     background-color: rgb(231, 252, 252);
-  }
+  } */
   
-  .category-box {
+  /* .category-box {
     margin-top: 2rem;
     margin-bottom: 2rem;
     position: relative;
     width: 12.625rem;
-    height: 15rem; /* Ensure a fixed height */
+    height: 15rem; 
     border-radius: 0.625rem;
     overflow: hidden;
     box-shadow: 0.125rem 0.125rem 0.625rem rgba(0, 0, 0, 0.2);
-  }
+  } */
   
-  .category-box img {
+  /* .category-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
+  } */
   
-  .category-box h2 {
+  /* .category-box h2 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -46,14 +46,14 @@
     font-weight: bold;
     text-align: center;
     color: white;
-    background: rgba(70, 69, 69, 0.5); /* Semi-transparent background */
+    background: rgba(70, 69, 69, 0.5); 
     padding: 0.5rem 1rem;
     border-radius: 0.3125rem;
     transition: background 0.3s ease-in-out;
-  }
+  } */
   
   /* Hover Effects */
-  .category-box:hover {
+  /* .category-box:hover {
     transform: scale(1.05);
   }
   
@@ -63,10 +63,10 @@
   
   .category-box:hover h2 {
     background: rgba(0, 0, 0, 0.7);
-  }
+  } */
   
   /* Responsive Design */
-  @media (max-width: 48rem) { 
+  /* @media (max-width: 48rem) { 
     .category {
       flex-direction: column;
       align-items: center;
@@ -76,8 +76,5 @@
       width: 90%;
       height: auto;
     }
-  }
-  /* .inputbox{
-    t
   } */
   

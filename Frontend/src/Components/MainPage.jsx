@@ -21,7 +21,7 @@ const MainPage = () => {
   //   fetchItems();
   // },[]);
   return (
-    <div className='mainPage'>
+    <div className='bg-gray-100 min-h-screen p-4'>
       <Navbar />
       <Carousel/>
       <CategoryCard/>
