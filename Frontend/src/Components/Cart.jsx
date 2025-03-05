@@ -60,7 +60,15 @@ const Cart = () => {
 const deleteAllCartItems=async()=>{
   const res=await axios.delete("https://flipkartclone-2-kz1p.onrender.com/deleteAllCart");
   updateCart()
-  alert("cart items deleted successfully")
+  toast.success("cart items deleted successfully",{
+    position: "top-right",
+    autoClose: 3000,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "colored",
+  });
+  // alert("cart items deleted successfully")
   setCartData([]);
 }
 
@@ -72,7 +80,15 @@ const deleteItem=async(id)=>{
     });
 
     if (res.status === 200) { 
-      alert("Item deleted successfully");
+      toast.success("Item deleted successfully",{
+        position: "top-right",
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
+      // alert("Item deleted successfully");
       updateCart()
       setCartData(prevCartData => prevCartData.filter(item => item._id !== id));
     }

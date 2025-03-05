@@ -14,11 +14,25 @@ const Signup = () => {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors,setError]=useState({})
+
+  const validations=()=>{
+    let errors={}
+    let is_valid=true
+    if(!username.trim()){
+      errors.username="enter valid username"
+      is_valid=false
+    }
+    // if(!/^\d{10}$/test.mobile){
+    //   errors.mobile="enter valid 10 digit mobile number"
+    //   is_valid=false
+    // }
+    setError(errors)
+  }
 
   const postUserData=async()=>{
+    if(!validations) return;
 
-    
-    //console.log('ggv g')
     const payload={
         username:username,
         mobile:mobile,
@@ -26,7 +40,7 @@ const Signup = () => {
         password:password
 
     }
-    console.log(payload)
+    // console.log(payload)
 
     try {
       const response = await axios.post("https://flipkartclone-2-kz1p.onrender.com/addUser", payload);

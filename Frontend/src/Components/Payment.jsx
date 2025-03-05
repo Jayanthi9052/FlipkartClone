@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [paymentStatus, setPaymentStatus] = useState(null);
+  const navigate=useNavigate()
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -16,7 +18,7 @@ const Payment = () => {
         // Extract cart data from response
         const cartItems = response?.data?.cartData || [];  
 
-        console.log(cartItems); // Debugging
+        // console.log(cartItems); // Debugging
 
         setCart(cartItems); // Set the cart state
         calculateTotal(cartItems); // Pass correct data to calculate total
@@ -47,7 +49,13 @@ const Payment = () => {
     <div className="p-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Payment Summary</h2>
       {cart.length === 0 ? (
+        <>
         <p>Your cart is empty.</p>
+        <button className='bg-slate-400 text-lg pl-3 pr-3' onClick={()=>navigate('/')}>Start Shopping</button>
+        </>
+        
+        
+
       ) : (
         <div>
           {cart.map((item, index) => (
