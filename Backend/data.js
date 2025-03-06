@@ -27,7 +27,43 @@ export const products=[
             rate:4.5,
             count:100
         },
-        image:`${BASE_URL}/images/Clothes/kidsFashion.jpeg`
+        image:`${BASE_URL}/images/Clothes/kids2.jpg`
+
+    },{
+        category:"Clothes",
+        sub_category:"kids",
+        title:"Traditional Pattu dress",
+        description:"latest model",
+        price:1500,
+        rating:{
+            rate:4.5,
+            count:100
+        },
+        image:`${BASE_URL}/images/Clothes/kids2.jpg`
+
+    },{
+        category:"Clothes",
+        sub_category:"kids",
+        title:"Traditional Pattu dress",
+        description:"latest model",
+        price:1500,
+        rating:{
+            rate:4.5,
+            count:100
+        },
+        image:`${BASE_URL}/images/Clothes/kids2.jpg`
+
+    },{
+        category:"Clothes",
+        sub_category:"kids",
+        title:"Traditional Pattu dress",
+        description:"latest model",
+        price:1500,
+        rating:{
+            rate:4.5,
+            count:100
+        },
+        image:`${BASE_URL}/images/Clothes/kids2.jpg`
 
     },
 //     {
