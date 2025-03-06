@@ -27,7 +27,7 @@ export const products=[
             rate:4.5,
             count:100
         },
-        image:`${BASE_URL}/images/Clothes/kids.png`
+        image:`${BASE_URL}/images/Clothes/kidsFashion.jpeg`
 
     },
 //     {
