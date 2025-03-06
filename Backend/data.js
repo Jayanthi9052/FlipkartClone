@@ -3,33 +3,33 @@ import dotenv from 'dotenv'
 dotenv.config()
 const BASE_URL=process.env.BASE_URL;
 export const products=[
+    // {
+    //     category:"Kitchen",
+    //     sub_category:"utensils",
+    //     title:"Dosa Pan",
+    //     description:"latest model",
+    //     price:400,
+    //     rating:{
+    //         rate:4.5,
+    //         count:100
+    //     },
+    //     image:`${BASE_URL}/images/Kitchen/pan.jpg`
+
+
+    // }
     {
-        category:"Kitchen",
-        sub_category:"utensils",
-        title:"Dosa Pan",
+        category:"Clothes",
+        sub_category:"kids",
+        title:"Traditional Pattu dress",
         description:"latest model",
-        price:400,
+        price:1500,
         rating:{
             rate:4.5,
             count:100
         },
-        image:`${BASE_URL}/images/Kitchen/pan.jpg`
+        image:`${BASE_URL}/images/Clothes/kids.png`
 
-
-    }
-//     {
-//         category:"Clothes",
-//         sub_category:"mens",
-//         title:"shirt",
-//         description:"latest model",
-//         price:300,
-//         rating:{
-//             rate:4.5,
-//             count:100
-//         },
-//         image:`${BASE_URL}/images/Clothes/Shirt.png`
-
-//     },
+    },
 //     {
 //         category:"Clothes",
 //         sub_category:"mens",
