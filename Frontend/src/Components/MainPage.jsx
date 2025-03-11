@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import axios from 'axios'
-import './styles.css'
+// import './styles.css'
 import Carousel from './Carousel';
 import CategoryCard from './FetchCategoryCard';
 

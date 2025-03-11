@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import logo from '../assets/images/Flipkart_Logo_1.png'
-import './styles.css'
+// import './styles.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -67,8 +67,6 @@ const Login = () => {
           position:"top-right",
           draggable:true,
           pauseOnHover:true,
-          autoClose:3000
-
 
         })
         

@@ -3,7 +3,7 @@ import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, MagnifyingGlassIcon, ShoppingCartIcon, CheckBadgeIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 import logo from '/src/assets/images/Flipkart_Logo_1.png';
-import './styles.css';
+// import './styles.css';
 import axios from 'axios';
 import { CartContext } from '../App';
 
